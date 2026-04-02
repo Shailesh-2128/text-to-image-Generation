@@ -1,0 +1,563 @@
+:root {
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --error-color: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* Very light solid base */
+  background-color: #f8fafc;
+
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ========================================================
+   🔥 ADVANCED CREATIVE BACKGROUND LAYERS
+   ======================================================== */
+.creative-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+/* 1. Subtle grid lines spanning the back */
+.creative-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* 2. Abstract Moving Glass Shapes */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+  animation: floatGeometric 20s infinite alternate ease-in-out;
+}
+
+/* Bright Cyberpunk Pink/Purple Orb */
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  top: -5%;
+  left: -5%;
+  animation-duration: 25s;
+}
+
+/* Deep Ocean Blue Orb */
+.shape-2 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  bottom: -10%;
+  right: -10%;
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+/* Mint Green Orb */
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  top: 40%;
+  left: 50%;
+  animation-duration: 28s;
+  animation-delay: -10s;
+  opacity: 0.5;
+}
+
+/* 3. Floating 'Glass Cubes' */
+.shape-4,
+.shape-5,
+.shape-6 {
+  filter: none;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  animation: floatCubes 15s infinite linear;
+}
+
+.shape-4 {
+  width: 120px;
+  height: 120px;
+  bottom: -150px;
+  left: 15%;
+  animation-duration: 18s;
+}
+
+.shape-5 {
+  width: 80px;
+  height: 80px;
+  bottom: -150px;
+  left: 75%;
+  animation-duration: 14s;
+  animation-delay: 5s;
+}
+
+.shape-6 {
+  width: 150px;
+  height: 150px;
+  bottom: -150px;
+  left: 45%;
+  animation-duration: 22s;
+  animation-delay: 2s;
+}
+
+@keyframes floatGeometric {
+  0% {
+    transform: scale(0.8) translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.1) translate(100px, 50px) rotate(180deg);
+  }
+
+  100% {
+    transform: scale(0.9) translate(-50px, 150px) rotate(360deg);
+  }
+}
+
+@keyframes floatCubes {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ========================================================
+   MAIN CONTAINER & FOREGROUND
+   ======================================================== */
+.container {
+  width: 100%;
+  max-width: 850px;
+  padding: 1.5rem;
+  margin: 1.5rem;
+
+  /* Ultra-Premium Glassmorphism Effect */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 100%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+
+  border-radius: 24px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 10;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(to right, #2563eb, #8b5cf6, #f43f5e);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bgGradientMove 4s linear infinite;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+@keyframes bgGradientMove {
+  to {
+    background-position: 200% center;
+  }
+}
+
+header p {
+  color: #475569;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+.generator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.generator-form input {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.6);
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  width: 100%;
+}
+
+.generator-form input::placeholder {
+  color: #94a3b8;
+}
+
+.generator-form input:focus {
+  border-color: #a78bfa;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.generator-form input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+.generator-form button {
+  padding: 1rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+  background-size: 200% auto;
+  color: white;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+.generator-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.6);
+}
+
+.generator-form button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 5px 15px -5px rgba(139, 92, 246, 0.5);
+}
+
+.generator-form button:disabled {
+  background: #cbd5e1;
+  color: #f8fafc;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  padding: 1rem;
+  background-color: rgba(254, 242, 242, 0.85);
+  border-left: 5px solid var(--error-color);
+  color: #b91c1c;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  font-size: 0.95rem;
+}
+
+.result-container {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px dashed rgba(167, 139, 250, 0.4);
+  border-radius: 20px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  text-align: center;
+}
+
+.result-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.result-container:hover {
+  border-color: rgba(139, 92, 246, 0.7);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.empty-state {
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  color: #475569;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(139, 92, 246, 0.2);
+  border-radius: 50%;
+  border-top-color: #8b5cf6;
+  border-left-color: #6366f1;
+  animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.image-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.image-display img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-display img:hover {
+  transform: scale(1.02) translateY(-3px);
+}
+
+.download-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #6366f1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  background-clip: padding-box;
+  width: 100%;
+  max-width: 300px;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #6366f1, #d946ef);
+}
+
+.download-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6366f1, #d946ef);
+  color: white;
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+.download-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ========================================================
+   MEDIA QUERIES FOR RESPONSIVENESS
+   ======================================================== */
+@media (min-width: 640px) {
+  .container {
+    padding: 2.5rem;
+    margin: 2rem;
+    border-radius: 30px;
+  }
+
+  header h1 {
+    font-size: 2.8rem;
+  }
+
+  header p {
+    font-size: 1.1rem;
+  }
+
+  .result-container {
+    padding: 2.5rem;
+    min-height: 400px;
+  }
+
+  .image-display img {
+    max-height: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  header h1 {
+    font-size: 3.5rem;
+  }
+
+  header p {
+    font-size: 1.2rem;
+  }
+
+  .generator-form {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .generator-form input {
+    flex: 1;
+    padding: 1.35rem 1.5rem;
+    font-size: 1.15rem;
+    border-radius: 16px;
+  }
+
+  .generator-form button {
+    width: 240px;
+    padding: 1.35rem 2.5rem;
+    font-size: 1.15rem;
+    border-radius: 16px;
+  }
+
+  .result-container {
+    min-height: 450px;
+  }
+
+  .download-btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.15rem;
+    border-radius: 14px;
+    width: auto;
+  }
+}
+
+/* Scale background orbs gracefully on smaller screens */
+@media (max-width: 767px) {
+  .shape-1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .shape-2 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .shape-3 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .shape-4 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .shape-6 {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 1rem;
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
+}
