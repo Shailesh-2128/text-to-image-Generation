@@ -12,7 +12,7 @@ export const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/profile');
+        const { data } = await axios.get('https://text-to-image-ai-ypsw.onrender.com/api/profile');
         setProfile(data);
         setName(data.name);
       } catch (err) {
@@ -25,7 +25,7 @@ export const Profile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put('http://localhost:5000/api/profile/update', { name });
+      const { data } = await axios.put('https://text-to-image-ai-ypsw.onrender.com/api/profile/update', { name });
       toast.success('Profile updated');
       setProfile(data);
       const user = JSON.parse(localStorage.getItem('user'));

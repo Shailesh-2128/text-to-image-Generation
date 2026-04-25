@@ -18,7 +18,7 @@ export const Signup = () => {
     }
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
+      await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/auth/signup', { name, email, password });
       toast.success('Account created! Please log in.');
       navigate('/login');
     } catch (err) {
