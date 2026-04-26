@@ -8,7 +8,7 @@ export const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [name, setName] = useState('');
   const { setUser } = useAuth();
-  
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -52,16 +52,16 @@ export const Profile = () => {
 
       <div className="profile-stats">
         <div className="stat-box">
-          <span className="stat-label"><Mail size={16} style={{display:'inline', verticalAlign:'text-bottom', marginRight:'5px'}}/> Email</span>
-          <span className="stat-value" style={{fontSize: '1.2rem', wordBreak: 'break-all'}}>{profile.email}</span>
+          <span className="stat-label"><Mail size={16} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '5px' }} /> Email</span>
+          <span className="stat-value" style={{ fontSize: '1.2rem', wordBreak: 'break-all' }}>{profile.email}</span>
         </div>
         <div className="stat-box">
-          <span className="stat-label"><ImageIcon size={16} style={{display:'inline', verticalAlign:'text-bottom', marginRight:'5px'}}/> Generated</span>
+          <span className="stat-label"><ImageIcon size={16} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '5px' }} /> Generated</span>
           <span className="stat-value">{profile.totalImages}</span>
         </div>
         <div className="stat-box">
-          <span className="stat-label"><Calendar size={16} style={{display:'inline', verticalAlign:'text-bottom', marginRight:'5px'}}/> Member Since</span>
-          <span className="stat-value" style={{fontSize: '1.1rem'}}>{new Date(profile.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span className="stat-label"><Calendar size={16} style={{ display: 'inline', verticalAlign: 'text-bottom', marginRight: '5px' }} /> Member Since</span>
+          <span className="stat-value" style={{ fontSize: '1.1rem' }}>{new Date(profile.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
       </div>
 
@@ -70,11 +70,11 @@ export const Profile = () => {
         <form onSubmit={handleUpdate} style={{ maxWidth: '400px', marginTop: '1.5rem' }}>
           <div className="form-group">
             <label>Full Name</label>
-            <input 
-              type="text" 
-              value={name} 
-              onChange={e => setName(e.target.value)} 
-              required 
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
               style={{ width: '100%', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #cbd5e1', background: 'rgba(255,255,255,0.8)', fontSize: '1rem', outline: 'none' }}
               onFocus={e => { e.target.style.borderColor = '#8b5cf6'; e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.15)'; }}
               onBlur={e => { e.target.style.borderColor = '#cbd5e1'; e.target.style.boxShadow = 'none'; }}

@@ -39,17 +39,17 @@ export const Settings = () => {
         <h2>Settings</h2>
         <p>Configure security preferences and account actions</p>
       </header>
-      
+
       <div className="panel-card">
         <h3 className="panel-title"><Shield size={20} /> Change Password</h3>
         <form onSubmit={handleChangePassword} style={{ maxWidth: '400px', marginTop: '1.5rem' }}>
           <div className="form-group">
             <label>Current Password</label>
-            <input 
-              type="password" 
-              value={currentPassword} 
-              onChange={e => setCurrentPassword(e.target.value)} 
-              required 
+            <input
+              type="password"
+              value={currentPassword}
+              onChange={e => setCurrentPassword(e.target.value)}
+              required
               style={{ width: '100%', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #cbd5e1', background: 'rgba(255,255,255,0.8)', fontSize: '1rem', outline: 'none' }}
               onFocus={e => { e.target.style.borderColor = '#8b5cf6'; e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.15)'; }}
               onBlur={e => { e.target.style.borderColor = '#cbd5e1'; e.target.style.boxShadow = 'none'; }}
@@ -57,11 +57,11 @@ export const Settings = () => {
           </div>
           <div className="form-group">
             <label>New Password</label>
-            <input 
-              type="password" 
-              value={newPassword} 
-              onChange={e => setNewPassword(e.target.value)} 
-              required 
+            <input
+              type="password"
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+              required
               style={{ width: '100%', padding: '0.85rem 1rem', borderRadius: '10px', border: '1px solid #cbd5e1', background: 'rgba(255,255,255,0.8)', fontSize: '1rem', outline: 'none' }}
               onFocus={e => { e.target.style.borderColor = '#8b5cf6'; e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.15)'; }}
               onBlur={e => { e.target.style.borderColor = '#cbd5e1'; e.target.style.boxShadow = 'none'; }}

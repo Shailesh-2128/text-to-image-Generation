@@ -36,7 +36,7 @@ export const NewChat = () => {
         prompt
       });
       setImage(response.data.image);
-      
+
       if (!user) {
         localStorage.setItem('guestUsed', 'true');
       }
