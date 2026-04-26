@@ -12,7 +12,7 @@ export const Settings = () => {
   const handleChangePassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('https://text-to-image-ai-ypsw.onrender.com/api/change-password', { currentPassword, newPassword });
+      await axios.put('http://localhost:5000/api/change-password', { currentPassword, newPassword });
       toast.success('Password changed successfully');
       setCurrentPassword('');
       setNewPassword('');
@@ -24,7 +24,7 @@ export const Settings = () => {
   const handleDeleteAccount = async () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
       try {
-        await axios.delete('https://text-to-image-ai-ypsw.onrender.com/api/delete-account');
+        await axios.delete('http://localhost:5000/api/delete-account');
         toast.success('Account deleted');
         logout();
       } catch (err) {

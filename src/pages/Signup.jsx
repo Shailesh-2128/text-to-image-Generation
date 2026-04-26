@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
 
 export const Signup = () => {
   const [name, setName] = useState('');
@@ -18,13 +20,27 @@ export const Signup = () => {
     }
     setLoading(true);
     try {
-      await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/auth/signup', { name, email, password });
+      await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
       toast.success('Account created! Please log in.');
       navigate('/login');
     } catch (err) {
       toast.error(err.response?.data?.error || 'Signup failed');
     } finally {
       setLoading(false);
+    }
+  };
+  const { login } = useAuth();
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/google', {
+        credential: credentialResponse.credential
+      });
+      login(res.data.token, res.data.user);
+      toast.success('Signed up with Google successfully!');
+      navigate('/');
+    } catch (err) {
+      toast.error(err.response?.data?.error || 'Google Signup failed');
     }
   };
 
@@ -67,6 +83,20 @@ export const Signup = () => {
           {loading ? 'Creating...' : 'Sign Up'}
         </button>
       </form>
+      <div className="auth-divider">
+        <span>OR</span>
+      </div>
+      <div className="google-btn-wrapper">
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={() => toast.error('Google Signup Failed')}
+          theme="outline"
+          size="large"
+          shape="pill"
+          text="continue_with"
+          width="100%"
+        />
+      </div>
       <div className="auth-link">
         Already have an account? <Link to="/login">Login</Link>
       </div>

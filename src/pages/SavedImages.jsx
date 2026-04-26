@@ -9,7 +9,7 @@ export const SavedImages = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const { data } = await axios.get('https://text-to-image-ai-ypsw.onrender.com/api/saved-images');
+        const { data } = await axios.get('http://localhost:5000/api/saved-images');
         setImages(data);
       } catch (err) {
         console.error(err);

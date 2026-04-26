@@ -32,7 +32,7 @@ export const NewChat = () => {
     setImage(null);
 
     try {
-      const response = await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/generate-image', {
+      const response = await axios.post('http://localhost:5000/api/generate-image', {
         prompt
       });
       setImage(response.data.image);
@@ -58,7 +58,7 @@ export const NewChat = () => {
       return;
     }
     try {
-      await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/save-image', {
+      await axios.post('http://localhost:5000/api/save-image', {
         imageUrl: image,
         prompt
       });
