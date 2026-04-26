@@ -8,7 +8,7 @@ export const ChatHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/chat-history');
+        const { data } = await axios.get('https://text-to-image-ai-ypsw.onrender.com/api/chat-history');
         setHistory(data);
       } catch (err) {
         console.error(err);

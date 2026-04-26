@@ -16,7 +16,7 @@ export const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/auth/login', { email, password });
       login(res.data.token, res.data.user);
       toast.success('Logged in successfully!');
       navigate('/');
@@ -28,7 +28,7 @@ export const Login = () => {
   };
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/google', {
+      const res = await axios.post('https://text-to-image-ai-ypsw.onrender.com/api/auth/google', {
         credential: credentialResponse.credential
       });
       login(res.data.token, res.data.user);
